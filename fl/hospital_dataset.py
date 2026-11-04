@@ -3,6 +3,7 @@ import csv
 import json
 import os
 import shutil
+import uuid
 import tempfile
 import zipfile
 from collections import Counter
@@ -35,8 +36,10 @@ def install_dataset(uploaded_file, storage):
     datasets_root = storage / "datasets"
     datasets_root.mkdir(parents=True, exist_ok=True)
 
+    # Extract into Docker's internal temporary storage,
+    # rather than the slower Windows-mounted dataset folder.
     staging = Path(tempfile.mkdtemp(
-        prefix="upload_", dir=datasets_root
+        prefix="fedretina_upload_"
     ))
     archive_path = staging / "dataset.zip"
     extraction = staging / "content"
@@ -191,16 +194,36 @@ def install_dataset(uploaded_file, storage):
         ) as f:
             json.dump(manifest, f, indent=2)
 
+                
         active = datasets_root / "active"
+        backup = datasets_root / f"backup_{uuid.uuid4().hex}"
 
-        if active.exists():
-            raise ValueError(
-                "An active dataset already exists. "
-                "Dataset replacement is not enabled yet."
-            )
+        try:
+            # Preserve the existing dataset before replacement.
+            if active.exists():
+                os.replace(active, backup)
 
-        # Move the validated dataset into persistent storage.
-        os.replace(csv_path.parent, active)
+            # Create the new active directory.
+            # Copy instead of renaming across the mounted filesystem.
+            shutil.copytree(csv_path.parent, active)
+
+        except Exception:
+            # Remove an incomplete installation if copying failed.
+            if active.exists():
+                shutil.rmtree(active, ignore_errors=True)
+
+            # Restore the previous dataset.
+            if backup.exists():
+                os.replace(backup, active)
+
+            raise
+
+        else:
+            # Delete the backup only after successful installation.
+            if backup.exists():
+                shutil.rmtree(backup)
+
+
 
         return {"status": "success", **manifest}
 

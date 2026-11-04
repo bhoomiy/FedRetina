@@ -52,7 +52,7 @@ export function HospitalDashboardPage() {
         throw new Error("No hospital linked to this account.");
       }
 
-      const workerUrl = `http://localhost:${5000 + clientId}`;
+      const workerUrl = `${window.location.protocol}//${window.location.hostname}:${5000 + clientId}`;
 
       const [modelResponse, healthResponse, datasetResponse, monitoringResponse] =
         await Promise.all([
@@ -214,7 +214,7 @@ export function HospitalDatasetPage() {
   );
 
   const validHospital = clientId >= 1 && clientId <= 4;
-  const workerUrl = `http://localhost:${5000 + clientId}`;
+  const workerUrl = `${window.location.protocol}//${window.location.hostname}:${5000 + clientId}`;
 
   const [file, setFile] = useState(null);
   const [dataset, setDataset] = useState(null);
@@ -475,7 +475,7 @@ export function HospitalTrainingPage() {
   const [result, setResult] = useState(null);
 
   const validHospital = clientId >= 1 && clientId <= 4;
-  const workerUrl = `http://localhost:${5000 + clientId}`;
+  const workerUrl = `${window.location.protocol}//${window.location.hostname}:${5000 + clientId}`;
 
   async function runAction(action) {
     if (!validHospital) return;
@@ -726,7 +726,7 @@ export function HospitalGlobalModelPage() {
 
       if (clientId >= 1 && clientId <= 4) {
         const workerResponse = await fetch(
-          `http://localhost:${5000 + clientId}/health`
+          `${window.location.protocol}//${window.location.hostname}:${5000 + clientId}/health`
         );
 
         if (!workerResponse.ok) {
@@ -754,8 +754,11 @@ export function HospitalGlobalModelPage() {
     setMessage("");
 
     try {
+      const workerUrl =
+  `${window.location.protocol}//${window.location.hostname}:${5000 + clientId}`;
+
       const response = await fetch(
-        `http://localhost:${5000 + clientId}/async/sync`,
+        `${workerUrl}/async/sync`,
         { method: "POST" }
       );
 

@@ -1,11 +1,11 @@
 {
-  "samples": 114,
+  "samples": 175,
   "class_distribution": {
-    "No DR": 37,
-    "Mild": 6,
-    "Moderate": 34,
-    "Severe": 22,
-    "Proliferative DR": 15
+    "No DR": 35,
+    "Mild": 35,
+    "Moderate": 35,
+    "Severe": 35,
+    "Proliferative DR": 35
   },
   "csv": "client.csv",
   "images": "images"

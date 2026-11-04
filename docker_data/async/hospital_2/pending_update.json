@@ -1,8 +1,8 @@
 {
   "hospital_id": 2,
   "base_version": 3,
-  "num_samples": 91,
-  "train_loss": 1.5625235438346863,
+  "num_samples": 120,
+  "train_loss": 1.522011637687683,
   "train_accuracy": 31.25,
   "config": {
     "distribution": "non_iid",
@@ -14,13 +14,16 @@
     "mu": 0.01,
     "use_dp": false
   },
-  "created_at": "2026-10-09T09:58:11.835642+00:00",
-  "status": "pending_submission",
+  "created_at": "2026-11-04T22:11:14.516858+00:00",
+  "status": "submitted",
   "dataset_source": "uploaded_idrid",
   "test_metrics": {
-    "test_samples": 23,
-    "test_loss": 1.2896983571674512,
-    "test_accuracy": 47.82608695652174,
-    "test_macro_f1": 0.2
-  }
+    "test_samples": 30,
+    "test_loss": 1.4174786488215128,
+    "test_accuracy": 40.0,
+    "test_macro_f1": 0.22434782608695653
+  },
+  "decision": "accepted",
+  "submission_id": "613a0d11e2da4eadaa9166906933ef5e",
+  "new_version": 4
 }

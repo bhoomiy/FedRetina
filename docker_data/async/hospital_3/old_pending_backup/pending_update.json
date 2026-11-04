@@ -1,0 +1,29 @@
+{
+  "hospital_id": 3,
+  "base_version": 2,
+  "num_samples": 91,
+  "train_loss": 1.194979190826416,
+  "train_accuracy": 65.625,
+  "config": {
+    "distribution": "non_iid",
+    "algorithm": "fedprox",
+    "local_epochs": 1,
+    "batch_size": 16,
+    "learning_rate": 0.0005,
+    "max_batches": 2,
+    "mu": 0.01,
+    "use_dp": false
+  },
+  "created_at": "2026-10-08T20:08:50.503796+00:00",
+  "status": "submitted",
+  "dataset_source": "uploaded_idrid",
+  "test_metrics": {
+    "test_samples": 23,
+    "test_loss": 1.5261720678080684,
+    "test_accuracy": 30.434782608695652,
+    "test_macro_f1": 0.16666666666666666
+  },
+  "decision": "rejected_no_improvement",
+  "submission_id": "cfcf3556c31f4d418684cc7a7ec6eb3e",
+  "new_version": 2
+}

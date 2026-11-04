@@ -1,9 +1,9 @@
 {
   "hospital_id": 1,
-  "base_version": 3,
-  "num_samples": 91,
-  "train_loss": 1.4391592741012573,
-  "train_accuracy": 43.75,
+  "base_version": 4,
+  "num_samples": 120,
+  "train_loss": 1.553988754749298,
+  "train_accuracy": 25.0,
   "config": {
     "distribution": "non_iid",
     "algorithm": "fedprox",
@@ -14,16 +14,16 @@
     "mu": 0.01,
     "use_dp": false
   },
-  "created_at": "2026-10-08T20:31:10.508956+00:00",
+  "created_at": "2026-11-04T22:31:51.149383+00:00",
   "status": "submitted",
   "dataset_source": "uploaded_idrid",
   "test_metrics": {
-    "test_samples": 23,
-    "test_loss": 1.2429142101951267,
-    "test_accuracy": 52.17391304347826,
-    "test_macro_f1": 0.2473684210526316
+    "test_samples": 30,
+    "test_loss": 1.6221203327178955,
+    "test_accuracy": 13.333333333333334,
+    "test_macro_f1": 0.047058823529411764
   },
   "decision": "rejected_no_improvement",
-  "submission_id": "80c39b2c82c54866bc98580c848508f3",
-  "new_version": 3
+  "submission_id": "5f3c80d43a574015adf33a51c5c668bb",
+  "new_version": 4
 }

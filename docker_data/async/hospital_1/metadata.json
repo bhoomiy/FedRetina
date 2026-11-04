@@ -1,6 +1,6 @@
 {
   "hospital_id": 1,
-  "global_version": 3,
-  "checkpoint": "global_v3.pth",
+  "global_version": 4,
+  "checkpoint": "global_v4.pth",
   "source": "http://host.docker.internal:5000"
 }
